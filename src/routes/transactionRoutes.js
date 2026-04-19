@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { protect } = require('../middleware/protect');
+const {sendMoney, getTransactionHistory} = require('../controller/transactionController');
+
+
+router.post('/send', protect, sendMoney);
+router.get('/history', protect, getTransactionHistory);
+
+module.exports = router;

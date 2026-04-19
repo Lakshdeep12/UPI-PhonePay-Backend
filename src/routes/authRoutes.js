@@ -1,0 +1,14 @@
+const express = require('express');
+const router = express.Router();
+
+const { registerUser, loginUser, setupMpin, getUserProfile} = require('../controller/authController');
+const { protect } = require('../middleware/protect');
+
+router.post('/register', registerUser);
+router.post('/login',loginUser);
+router.post('/set-mpin', protect, setupMpin);
+router.get('/profile', protect, getUserProfile);
+
+
+
+module.exports = router;
